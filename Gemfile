@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
 gem 'sqlite3'
-gem 'rspotify'
-gem 'activerecord', require: 'active_record'
-gem 'rspec'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 gem 'rake'
 gem 'pry'
+gem 'require_all'
