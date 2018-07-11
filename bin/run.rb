@@ -3,7 +3,10 @@ require_relative '../config/environment.rb'
 require_relative '../lib/cli.rb'
 
 puts "Welcome to JamSesh! Let's make you an awesome playlist!"
-puts "What are you up to?
-1. Workout"
+puts "What would you like to listen to?
+1. Workout Music
+2. Chill Music
+3. Random Mix"
+
 answer = gets.chomp.to_i
 make_playlist(answer)
