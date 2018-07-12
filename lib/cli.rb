@@ -12,6 +12,8 @@ require_relative '../config/environment.rb'
       Song.list_random_songs_for_chill
     when 3
       Song.list_random_songs_for_all
+    when 4
+      Song.favorite_songs_playlist
     else
       puts "Please select correct number"
       puts "What would you like to listen to?

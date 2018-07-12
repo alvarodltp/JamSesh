@@ -25,8 +25,53 @@ class Song < ActiveRecord::Base
     x.sample(15)
   end
 
-  def self.list_random_songs_for_workout
-    y = self.randomize_for_workout.map.with_index(0) do |song, i|
+
+    def self.list_random_songs_for_workout
+      y = self.randomize_for_workout.map.with_index(0) do |song, i|
+        puts "#{i + 1}. #{song.name} - #{song.artist}"
+        song
+      end
+      puts "If you would like to save a song to your playlist, select song number. To quit enter 0"
+      reply = gets.chomp.to_i
+      if reply > 0 && reply <= 15
+        song = y[reply-1]
+        if Playlist.all.find do |x|
+          x.song_id == song.song_id
+        end
+          puts "Song already in playlist, please choose another one."
+          reply = gets.chomp.to_i
+        else
+        Playlist.create(title: song.name, artist: song.artist, song_id: song.song_id, user_id: user)
+        end
+      else
+       reply == 0
+      end
+    end
+
+
+  def self.list_random_songs_for_chill
+    y = self.randomize_for_chill.map.with_index(0) do |song, i|
+      puts "#{i + 1}. #{song.name} - #{song.artist}"
+      song
+    end
+      puts "If you would like to save a song to your playlist, select song number. To quit enter 0"
+      reply = gets.chomp.to_i
+      if reply > 0 && reply <= 15
+        song = y[reply-1]
+        if Playlist.all.find do |x|
+          x.song_id == song.song_id
+        end
+          puts "Song already in playlist, please choose another one."
+        else
+        Playlist.create(title: song.name, artist: song.artist, song_id: song.song_id)
+        end
+     else
+       reply == 0
+    end
+  end
+
+  def self.list_random_songs_for_all
+    y = self.randomize_for_all.map.with_index(0) do |song, i|
       puts "#{i + 1}. #{song.name} - #{song.artist}"
       song
     end
@@ -39,23 +84,16 @@ class Song < ActiveRecord::Base
         end
           puts "Song already in playlist"
         else
-          Playlist.create(title: song.name, song_id: song.song_id)
+          Playlist.create(title: song.name, artist: song.artist, song_id: song.song_id)
         end
-
      else
        reply == 0
     end
   end
 
-  def self.list_random_songs_for_chill
-    self.randomize_for_chill.map.with_index(0) do |song, i|
-      puts "#{i + 1}. #{song.name} - #{song.artist}"
-    end
-  end
-
-  def self.list_random_songs_for_all
-    self.randomize_for_all.map.with_index(0) do |song, i|
-      puts "#{i + 1}. #{song.name} - #{song.artist}"
+  def self.favorite_songs_playlist
+    Playlist.all.map.with_index(0) do |song, i|
+      puts "#{i + 1}. #{song.title} - #{song.artist}"
     end
   end
 

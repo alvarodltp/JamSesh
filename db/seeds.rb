@@ -38,3 +38,5 @@ Song.create(name: 'Didnt Cha Know', artist: 'Erykah Badu', genre: 'Soul', energy
 Song.create(name: 'Sleep', artist: 'Nick Hakim', genre: 'Soul', energy_level: 1, song_id: 38)
 Song.create(name: 'The Look of Love', artist: 'Nina Simone', genre: 'Jazz', energy_level: 2, song_id: 39)
 Song.create(name: 'Cry Me a River', artist: 'Ella Fitzgerald', genre: 'Jazz', energy_level: 2, song_id: 40)
+User.create(name: 'John', user_id: 1)
+User.create(name: 'Alvaro', user_id: 2)
