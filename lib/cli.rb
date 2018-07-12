@@ -17,7 +17,8 @@ require_relative '../config/environment.rb'
       puts "What would you like to listen to?
       1. Workout Music
       2. Chill Music
-      3. Random Mix"
+      3. Random Mix
+      4. Saved Favorites" #this will be done by adding 1 song from each playlist they generate
       answer = gets.chomp.to_i
       make_playlist(answer)
     end

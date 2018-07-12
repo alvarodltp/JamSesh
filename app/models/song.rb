@@ -2,38 +2,28 @@ require 'pry'
 
 class Song < ActiveRecord::Base
 
-  # @@all = []
-  #
-  # def initialize(song)
-  #   @song = song
-  #   @@all << self
-  # end
-  #
-  # def self.all
-  #   @@all
-  # end
-      # binding.pry
+  belongs_to :playlist
+
   def self.randomize_for_workout
     x = Song.select do |song|
       song.energy_level > 3
     end
-    x.sample(4)
+    x.sample(15)
   end
 
   def self.randomize_for_chill
     x = Song.select do |song|
       song.energy_level <= 3
     end
-    x.sample(4)
+    x.sample(15)
   end
 
   def self.randomize_for_all
     x = Song.select do |song|
       song
     end
-    x.sample(4)
+    x.sample(15)
   end
-
 
   def self.list_random_songs_for_workout
     self.randomize_for_workout.map.with_index(0) do |song, i|
