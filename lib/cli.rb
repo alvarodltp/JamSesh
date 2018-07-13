@@ -4,16 +4,24 @@ require_relative '../config/environment.rb'
 
 # binding.pry
 
-  def make_playlist(answer)
+  def make_playlist(answer, user)
     case answer
     when 1
-      Song.list_random_songs_for_workout
+      puts "Here is an upbeat playlist for your workout."
+      puts "--------------------------------------------"
+      Song.list_random_songs_for_workout(user)
     when 2
-      Song.list_random_songs_for_chill
+      puts "Enjoy your chill time."
+      puts "----------------------"
+      Song.list_random_songs_for_chill(user)
     when 3
-      Song.list_random_songs_for_all
+      puts "Here's a good mix!"
+      puts "------------------"
+      Song.list_random_songs_for_all(user)
     when 4
-      Song.favorite_songs_playlist
+      puts "Here are your saved favorites."
+      puts "-----------------------------"
+      Song.favorite_songs_playlist(user)
     else
       puts "Please select correct number"
       puts "What would you like to listen to?
@@ -22,7 +30,7 @@ require_relative '../config/environment.rb'
         3. Random Mix
         4. Saved Favorites" #this will be done by adding 1 song from each playlist they generate
       answer = gets.chomp.to_i
-      make_playlist(answer)
+      make_playlist(answer, user)
       # picked_song = gets.chomp
     end
   end
@@ -36,7 +44,3 @@ require_relative '../config/environment.rb'
   #     picked_song == 0
   #   end
   # end
-
-  def save_song_to_playlist(selected_song_by_user)
-
-  end

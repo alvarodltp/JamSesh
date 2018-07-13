@@ -1,7 +1,7 @@
-class CreatePlaylists < ActiveRecord::Migration[5.1]
+class CreatePlaylistItems < ActiveRecord::Migration[5.1]
 
   def change
-    create_table :playlists do |t|
+    create_table :playlist_items do |t|
       t.string :title
       t.string :artist
       t.integer :song_id

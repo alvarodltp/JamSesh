@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 3) do
 
-  create_table "playlists", force: :cascade do |t|
+  create_table "playlist_items", force: :cascade do |t|
     t.string "title"
     t.string "artist"
     t.integer "song_id"
