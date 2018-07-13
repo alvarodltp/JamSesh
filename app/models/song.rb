@@ -100,7 +100,7 @@ class Song < ActiveRecord::Base
   end
 
   def self.favorite_songs_playlist(user)
-    PlaylistItem.all.map.with_index(0) do |song, i|
+    user.playlist_items.map.with_index(0) do |song, i|
       # binding.pry
       if user.user_id == song.user_id
         puts "#{i + 1}. #{song.title} - #{song.artist}"
